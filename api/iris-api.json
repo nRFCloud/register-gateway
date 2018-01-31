@@ -1,0 +1,35 @@
+{
+  "$context": "https://github.com/NordicSemiconductor/nrfcloud-freyr#irisapiresource",
+  "$contextVersion": 1,
+  "operations": {
+    "registerGateway": {
+      "summary": "Register new Gateway",
+      "description": "Registers a new Gateway and returns the certificate",
+      "parameters": [
+        {
+          "name": "tenantId",
+          "description": "Id of the tenant to register the gateway for",
+          "required": true,
+          "in": "path",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "successResponses": {
+        "201": {
+          "schema": "GatewayRegistrationResult",
+          "description": "The certificate for the newly created gateway"
+        }
+      },
+      "problemResponses": [
+        400,
+        403,
+        500
+      ],
+      "lambda": {
+        "handler": "index.handler"
+      }
+    }
+  }
+}
